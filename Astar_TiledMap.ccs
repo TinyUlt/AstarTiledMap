@@ -5,6 +5,12 @@
       <RootFolder Name=".">
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="HelloWorld.png" />
+        <Image Name="r1.png" />
+        <Project Name="Scene3D.csd" Type="Scene3D" />
+        <Mesh Name="bianfuyu.c3b" />
+        <Image Name="bianfuyu.png" />
+        <Mesh Name="tortoise.c3b" />
+        <Image Name="tortoise.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -2,6 +2,8 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "MoveSprite.h"
+#include "Server.h"
 USING_NS_CC;
 class HelloWorld : public cocos2d::Layer
 {
@@ -15,7 +17,13 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
     
-    void recivePath(std::vector<Vec2> data);
+    virtual bool onTouchBegan(Touch* touch, Event* event);
+    virtual void onTouchMoved(Touch* touch, Event* event);
+    virtual void onTouchEnded(Touch* touch, Event* event);
+    
+//    virtual void update(float dt);
+    Server* m_server;
+    MoveSprite* m_sprite;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -32,37 +32,45 @@ bool HelloWorld::init()
     }
     
     auto rootNode = CSLoader::createNode("MainScene.csb");
-
+    TMXTiledMap* _tiledMap = TMXTiledMap::create("mapData/baseMap.tmx");
+    rootNode->addChild(_tiledMap);
+    m_sprite = MoveSprite::create();
+    rootNode->addChild(m_sprite);
     addChild(rootNode);
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
     
-    Server* _server = new Server();
+    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+    listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+    
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+    
+    
+    
+    m_server = new Server();
 
-//    const std::vector<Vec2>& _path = _server->startMove(Vec2(0,0), Vec2(10*8,10*8));
-//    
-//    for(auto & child : _path)
-//    {
-//        log("%f,%f", child.x, child.y);
-//    }
-//    log("   ");
-//    const std::vector<Vec2>& _path2 = _server->startMove(Vec2(10*8,10*8), Vec2(0,0));
-//    
-//    for(auto & child : _path2)
-//    {
-//        log("%f,%f", child.x, child.y);
-//    }
-//    log("   ");
-    const std::vector<Vec2>& _path3 = _server->startMove(Vec2(200,200), Vec2(8,8));
+    const std::vector<Vec2>& _path3 = m_server->startMove(Vec2(200,200), Vec2(8,8));
     
     for(auto & child : _path3)
     {
         log("%f,%f", child.x, child.y);
     }
     
-    
-    
     return true;
 }
-void HelloWorld::recivePath(std::vector<Vec2> data)
+bool HelloWorld::onTouchBegan(Touch* touch, Event* event)
+{
+    auto _touchPosition = touch->getLocation();
+    
+    m_sprite->startMove(m_server->startMove(m_sprite->getPosition(), _touchPosition));
+    return true;
+}
+void HelloWorld::onTouchMoved(Touch* touch, Event* event)
+{
+    
+}
+void HelloWorld::onTouchEnded(Touch* touch, Event* event)
 {
     
 }
