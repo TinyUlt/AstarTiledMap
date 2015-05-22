@@ -27,9 +27,13 @@ void MapXMLCreater::createXML(TMXTiledMap* tiledMap)//"baseMap.tmx"
 
 	char ch[10];
 	sprintf(ch , "%d", (int)m_mapSize.width);
-	MapDataElement->SetAttribute("width", ch);
+	MapDataElement->SetAttribute("mapWidth", ch);
 	sprintf(ch , "%d", (int)m_mapSize.height);
-	MapDataElement->SetAttribute("height", ch);
+	MapDataElement->SetAttribute("mapHeight", ch);
+    sprintf(ch , "%d", (int)m_tileSize.width);
+    MapDataElement->SetAttribute("tileWidth", ch);
+    sprintf(ch , "%d", (int)m_tileSize.height);
+    MapDataElement->SetAttribute("tileHeight", ch);
 
 	{
 		TiXmlElement *NameElement = new TiXmlElement("roadData");

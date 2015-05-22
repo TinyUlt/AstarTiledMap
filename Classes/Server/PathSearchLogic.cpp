@@ -63,7 +63,7 @@ std::vector<Vec2> PathSearchLogic::calculatePath( int startX, int startY, int en
                 break;
             }
             //把计算过的点从开放列表中删除
-            removeObjFromOpenList( _node);
+            removeAdjacentFromOpenList( _node);
             int _x = _node->m_x;
             int _y = _node->m_y;
             
@@ -76,28 +76,28 @@ std::vector<Vec2> PathSearchLogic::calculatePath( int startX, int startY, int en
             //检测8个方向的相邻节点是否可以放入开放列表中
             PathSprite* _adjacent = NULL;
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x +1, _y);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x +1, _y);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x , _y -1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x , _y -1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x -1, _y);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x -1, _y);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x , _y+1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x , _y+1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray,_x + 1, _y + 1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray,_x + 1, _y + 1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x +1, _y-1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x +1, _y-1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x -1, _y - 1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x -1, _y - 1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x -1, _y+1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x -1, _y+1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
             
@@ -142,7 +142,7 @@ std::vector<Vec2> PathSearchLogic::calculatePath( int startX, int startY, int en
                 break;
             }
             //把计算过的点从开放列表中删除
-            removeObjFromOpenList( _node);
+            removeAdjacentFromOpenList( _node);
             int _x = _node->m_x;
             int _y = _node->m_y;
             
@@ -156,28 +156,28 @@ std::vector<Vec2> PathSearchLogic::calculatePath( int startX, int startY, int en
             
             PathSprite* _adjacent = NULL;
             
-            _adjacent = getObjFromInspectArray( m_roadInspectArray, _x +1, _y);
+            _adjacent = getAdjacentFromInspectArray( m_roadInspectArray, _x +1, _y);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x , _y -1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x , _y -1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x -1, _y);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x -1, _y);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(   m_roadInspectArray, _x , _y+1);
+            _adjacent = getAdjacentFromInspectArray(   m_roadInspectArray, _x , _y+1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(  m_roadInspectArray, _x + 1, _y + 1);
+            _adjacent = getAdjacentFromInspectArray(  m_roadInspectArray, _x + 1, _y + 1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(   m_roadInspectArray, _x +1, _y-1);
+            _adjacent = getAdjacentFromInspectArray(   m_roadInspectArray, _x +1, _y-1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(   m_roadInspectArray, _x -1, _y - 1);
+            _adjacent = getAdjacentFromInspectArray(   m_roadInspectArray, _x -1, _y - 1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
-            _adjacent = getObjFromInspectArray(   m_roadInspectArray, _x -1, _y+1);
+            _adjacent = getAdjacentFromInspectArray(   m_roadInspectArray, _x -1, _y+1);
             inspectTheAdjacentNodes(_node, _adjacent, _endNode);
             
             
@@ -203,8 +203,7 @@ std::vector<Vec2> PathSearchLogic::calculatePath( int startX, int startY, int en
                 if(detectWhetherCanPassBetweenTwoPoints(_pathList[j], _pathList[i]))
                 {
                     _pathListTemp.push_back( _pathList[i]);
-                    
-                    
+
                     j = i;
                 }
             }
@@ -247,7 +246,7 @@ Vec2 PathSearchLogic::calculatePath(int startX, int startY)//计算点
             break;
         }
         //把计算过的点从开放列表中删除
-        removeObjFromOpenList( _node);
+        removeAdjacentFromOpenList( _node);
         int _x = _node->m_x;
         int _y = _node->m_y;
         
@@ -269,28 +268,28 @@ Vec2 PathSearchLogic::calculatePath(int startX, int startY)//计算点
         //检测8个方向的相邻节点是否可以放入开放列表中
         PathSprite* _adjacent = NULL;
         
-        _adjacent = getObjFromInspectArray(m_obstaclesInspectArray,  _x +1, _y);
+        _adjacent = getAdjacentFromInspectArray(m_obstaclesInspectArray,  _x +1, _y);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x , _y -1);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x , _y -1);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x -1, _y);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x -1, _y);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x , _y+1);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x , _y+1);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x + 1, _y + 1);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x + 1, _y + 1);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x +1, _y-1);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x +1, _y-1);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x -1, _y - 1);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x -1, _y - 1);
         inspectTheAdjacentNodes(_node, _adjacent);
         
-        _adjacent = getObjFromInspectArray( m_obstaclesInspectArray, _x -1, _y+1);
+        _adjacent = getAdjacentFromInspectArray( m_obstaclesInspectArray, _x -1, _y+1);
         inspectTheAdjacentNodes(_node, _adjacent);
     }
 B:
@@ -318,7 +317,7 @@ PathSprite* PathSearchLogic::getMinPathFormOpenList()
 
 }
 
-PathSprite* PathSearchLogic::getObjFromInspectArray( std::vector< std::vector<PathSprite*>>& InspectArray, int x, int y )
+PathSprite* PathSearchLogic::getAdjacentFromInspectArray( std::vector< std::vector<PathSprite*>>& InspectArray, int x, int y )
 {
 	if (x >=0 && y >=0 && x < m_mapSize.width && y < m_mapSize.height) {
 		return InspectArray[x][y];
@@ -406,9 +405,7 @@ void PathSearchLogic::clearPath()
 {
 	resetInspectArray();
 
-	//把移除了障碍物的地图放入检测列表中
 	m_openList.clear();
-//	m_pathList.clear();
 	m_haveInspectRoadList.clear();
     m_haveInspectObstaclesList.clear();
 
@@ -436,7 +433,7 @@ void PathSearchLogic::resetInspectArray()
     }
 }
 
-bool PathSearchLogic::removeObjFromOpenList( PathSprite* sprite )
+bool PathSearchLogic::removeAdjacentFromOpenList( PathSprite* sprite )
 {
 	if (!sprite) {
 		return  false;

@@ -16,6 +16,8 @@ public:
 	static MapPathXML m_roadPathXml;
 	static MapPathXML m_obstaclesPathXml;
 	static MapPathXML m_opcityPathXml;
+    static Size m_mapSize;
+    static Size m_tileSize;
 
 	static std::vector< std::vector<PathSprite*>> m_roadInspectArray;
 	static std::vector< std::vector<PathSprite*>> m_obstaclesInspectArray;

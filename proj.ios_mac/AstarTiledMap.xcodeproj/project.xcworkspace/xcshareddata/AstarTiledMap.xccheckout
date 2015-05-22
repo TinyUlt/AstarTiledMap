@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3423431A-203B-4696-ACAC-21AD0898876D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AstarTiledMap</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2143DA2D4ACEFD8A514255C0CDF3F4A23DC09811</key>
+		<string>https://github.com/TinyUlt/AstarTiledMap.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.ios_mac/AstarTiledMap.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2143DA2D4ACEFD8A514255C0CDF3F4A23DC09811</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/TinyUlt/AstarTiledMap.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2143DA2D4ACEFD8A514255C0CDF3F4A23DC09811</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2143DA2D4ACEFD8A514255C0CDF3F4A23DC09811</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AstarTiledMap</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,17 +1,13 @@
 ﻿#include "PathData.h"
 
 std::vector< std::vector<PathSprite*>> PathData::m_opcityInspectArray;
-
 std::vector< std::vector<PathSprite*>> PathData::m_obstaclesInspectArray;
-
 std::vector< std::vector<PathSprite*>> PathData::m_roadInspectArray;
-
 MapPathXML PathData::m_opcityPathXml;
-
 MapPathXML PathData::m_obstaclesPathXml;
-
 MapPathXML PathData::m_roadPathXml;
-
+Size PathData::m_mapSize;
+Size PathData::m_tileSize;
 
 PathData::PathData(void)
 {
@@ -114,15 +110,21 @@ void PathData::getPathdataFromXML( std::string mapPath )
 	myDocument->LoadFile();
 
 	TiXmlElement* MapDataElement = myDocument->RootElement();  // MapData
-	std::string _strwidth = MapDataElement->Attribute("width");  //获得student的name属性
-	std::string _strheight = MapDataElement->Attribute("height");  //获得student的name属性
-
-	m_roadPathXml.m_size.width =std::atoi( _strwidth.c_str() );
-	m_roadPathXml.m_size.height =std::atoi( _strheight.c_str() );
-	m_obstaclesPathXml.m_size.width =std::atoi( _strwidth.c_str() );
-	m_obstaclesPathXml.m_size.height =std::atoi( _strheight.c_str() );
-	m_opcityPathXml.m_size.width =std::atoi( _strwidth.c_str() );
-	m_opcityPathXml.m_size.height =std::atoi( _strheight.c_str() );
+	std::string _strwidth = MapDataElement->Attribute("mapWidth");  //获得student的name属性
+	std::string _strheight = MapDataElement->Attribute("mapHeight");  //获得student的name属性
+    std::string _strtilewidth = MapDataElement->Attribute("tileWidth");  //获得student的name属性
+    std::string _strtileheight = MapDataElement->Attribute("tileHeight");  //获得student的name属性
+    
+    m_mapSize = Size(std::atoi( _strwidth.c_str() ),std::atoi( _strheight.c_str() ));
+    m_tileSize = Size(std::atoi( _strtilewidth.c_str() ),std::atoi( _strtileheight.c_str() ));
+    
+	m_roadPathXml.m_size.width =m_mapSize.width;
+	m_roadPathXml.m_size.height =m_mapSize.height;
+	m_obstaclesPathXml.m_size.width =m_mapSize.width;
+	m_obstaclesPathXml.m_size.height =m_mapSize.height;
+	m_opcityPathXml.m_size.width =m_mapSize.width;
+	m_opcityPathXml.m_size.height =m_mapSize.height;
+    
 	TiXmlElement* roadDataElement = MapDataElement->FirstChildElement();
 	m_roadPathXml.m_data = roadDataElement->GetText();
 

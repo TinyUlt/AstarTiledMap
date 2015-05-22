@@ -18,7 +18,7 @@ void Server::init()
     MapXMLCreater::createXML(_tiledMap);
 #endif
 	PathData::createPathData("mapData.xml");
-	m_pathSearchLogic = new PathSearchLogic(PathData::m_roadPathXml.m_size,
+	m_pathSearchLogic = new PathSearchLogic(PathData::m_mapSize,
                                             PathData::m_roadInspectArray,
                                             PathData::m_obstaclesInspectArray,
                                             SEARCH_PATH_ASTAR,
@@ -27,7 +27,23 @@ void Server::init()
 
 std::vector<Vec2> Server::startMove( Vec2 startPoint, Vec2 endPoint )
 {
-    const std::vector<Vec2>& _path = m_pathSearchLogic->getSearchPath( startPoint, endPoint);
+    startPoint = getMapPositionByWorldPosition(startPoint);
+    endPoint = getMapPositionByWorldPosition(endPoint);
+
+    std::vector<Vec2> _path = m_pathSearchLogic->getSearchPath( (startPoint), (endPoint));
+    for(auto & child : _path)
+    {
+        child = getWorldPositionByMapPosition(child);
+    }
     
     return _path;
+}
+Vec2 Server::getWorldPositionByMapPosition( Vec2 point )
+{
+    return Vec2(PathData::m_tileSize.width * point.x, (PathData::m_mapSize.height - point.y)*PathData::m_tileSize.height);
+}
+
+Vec2 Server::getMapPositionByWorldPosition( Vec2 point )
+{
+    return Vec2((int)(point.x/PathData::m_tileSize.width),(int)(PathData::m_mapSize.height - point.y/PathData::m_tileSize.height ) );
 }

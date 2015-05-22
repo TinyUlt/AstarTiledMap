@@ -37,21 +37,21 @@ bool HelloWorld::init()
     
     Server* _server = new Server();
 
-    const std::vector<Vec2>& _path = _server->startMove(Vec2(1,1), Vec2(10,10));
-    
-    for(auto & child : _path)
-    {
-        log("%f,%f", child.x, child.y);
-    }
-    log("   ");
-    const std::vector<Vec2>& _path2 = _server->startMove(Vec2(1,1), Vec2(20,20));
-    
-    for(auto & child : _path2)
-    {
-        log("%f,%f", child.x, child.y);
-    }
-    log("   ");
-    const std::vector<Vec2>& _path3 = _server->startMove(Vec2(1,1), Vec2(50,50));
+//    const std::vector<Vec2>& _path = _server->startMove(Vec2(0,0), Vec2(10*8,10*8));
+//    
+//    for(auto & child : _path)
+//    {
+//        log("%f,%f", child.x, child.y);
+//    }
+//    log("   ");
+//    const std::vector<Vec2>& _path2 = _server->startMove(Vec2(10*8,10*8), Vec2(0,0));
+//    
+//    for(auto & child : _path2)
+//    {
+//        log("%f,%f", child.x, child.y);
+//    }
+//    log("   ");
+    const std::vector<Vec2>& _path3 = _server->startMove(Vec2(200,200), Vec2(8,8));
     
     for(auto & child : _path3)
     {

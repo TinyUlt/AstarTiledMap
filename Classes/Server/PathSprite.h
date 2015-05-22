@@ -4,7 +4,7 @@ USING_NS_CC;
 struct MapPathXML
 {
 	std::string m_data;
-	CCSize m_size;
+	Size m_size;
 };
 class PathSprite 
 {
